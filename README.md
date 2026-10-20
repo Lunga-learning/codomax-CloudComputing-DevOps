@@ -1,50 +1,200 @@
-# Linux, Networking, AWS and Terraform Learning Log — Days 6–30
+# ☁️ Cloud Computing & DevOps Learning Portfolio
 
-This repository contains a consolidated record of my hands-on DevOps learning from Day 6 through Day 30. Each day has a distinct focus to avoid repeating the same lesson in multiple entries.
+### Hands-on Learning | AWS | Linux | Networking | Terraform | Infrastructure as Code
 
-## Learning objectives
-- Practise Linux administration and command-line troubleshooting.
-- Understand users, groups, permissions, networking, SSH and cloud networking fundamentals.
-- Learn AWS infrastructure concepts while monitoring costs.
-- Build Terraform skills using variables, locals, outputs and reusable modules.
+Welcome to my Cloud Computing and DevOps learning portfolio!
 
-## Repository structure
+This repository documents my practical learning journey as I develop skills in cloud infrastructure, Linux administration, networking, automation, and Infrastructure as Code (IaC).
+
+My approach is to learn the concepts, practise them in a technical environment, document the process, troubleshoot problems, and record the results.
+
+I am building on my background in IT operations and support while working towards opportunities in **Cloud Engineering, DevOps, and IT Infrastructure**.
+
+---
+
+## 🎯 Learning Objectives
+
+My objectives are to:
+
+- Develop a strong foundation in cloud computing and AWS.
+- Strengthen Linux administration and troubleshooting skills.
+- Understand IP addressing, DNS, routing, ports, and network security.
+- Learn to define and organise infrastructure using Terraform.
+- Practise reusable Terraform modules and configurable deployments.
+- Build a portfolio that demonstrates practical technical learning.
+- Develop secure, repeatable, and cost-conscious cloud deployment habits.
+
+---
+
+## 🛠️ Technologies and Tools
+
+| Technology | Learning Focus |
+|---|---|
+| Linux | Command-line administration, files, permissions, processes, and services |
+| AWS | Cloud infrastructure concepts and networking |
+| Amazon EC2 | Virtual servers and Linux-based web server deployment |
+| Nginx | Web server installation, service management, and HTTP testing |
+| Networking | IP addressing, DNS, ports, routing, and firewalls |
+| Terraform | Infrastructure as Code, providers, variables, locals, and outputs |
+| Terraform Modules | Reusable configurations and root/child module organisation |
+| Git | Version control concepts |
+| GitHub | Source control, documentation, and portfolio development |
+| AWS CLI | Command-line interaction and credential troubleshooting |
+
+*This table reflects the technologies and topics covered in my learning activities. The portfolio will expand as I complete additional hands-on projects.*
+
+---
+
+## 📚 Learning Progress: Days 6–30
+
+My learning notes are organised by day to make progress easy to follow and review.
+
+### 🐧 Days 6–21: Linux Administration and Networking
+
+Topics covered include:
+
+- Linux command-line navigation and file management.
+- Filesystem usage and storage inspection.
+- Users, groups, and file permissions.
+- Process management and service administration.
+- System logs and troubleshooting.
+- IP addressing and DNS fundamentals.
+- Network ports, firewalls, and AWS security groups.
+- SSH access and secure file transfer.
+- Linux server deployment workflows.
+- Shell scripting fundamentals and backup practices.
+- Deployment checklists and technical evidence organisation.
+
+**Learning outcome:** Develop a structured approach to Linux administration, network troubleshooting, and server operations.
+
+### ☁️ Days 22–23: AWS Networking
+
+Topics covered include:
+
+- Amazon Virtual Private Cloud (VPC).
+- Subnets and IP address ranges.
+- Route tables and routing concepts.
+- Internet gateways.
+- Security groups and traffic control.
+
+**Learning outcome:** Understand how AWS networking components work together and why network configuration is important for secure cloud infrastructure.
+
+### 🏗️ Days 24–30: Terraform and Infrastructure as Code
+
+Topics covered include:
+
+- Terraform configuration structure.
+- AWS provider configuration.
+- Variables and default values.
+- Local values and derived configuration.
+- Outputs for displaying configuration results.
+- Variable files and command-line overrides.
+- Root modules and reusable child modules.
+- Terraform formatting, initialisation, validation, and planning.
+
+**Learning outcome:** Build and validate structured Terraform configurations, understand how values flow between modules, and organise reusable infrastructure definitions.
+
+**Important:** The Terraform exercises in Days 24–30 focused on configuration, validation, and planning. They did not deploy new AWS infrastructure.
+
+---
+
+## 📂 Repository Structure
 
 ```text
-devops-learning-days-06-to-30/
+codomax-CloudComputing-DevOps/
+│
 ├── README.md
 ├── LEARNING_NOTES_DAYS_06-30.md
+├── .gitignore
+│
 └── days/
     ├── day-06.md
+    ├── day-07.md
+    ├── day-08.md
     ├── ...
+    ├── day-29.md
     └── day-30.md
 ```
 
-## Evidence and accuracy
-These notes consolidate the lesson records available from my learning sessions. Specific command outputs are included where they were recorded. Where an exact output was not retained, the notes describe the learning objective and command examples rather than inventing a result.
+The repository contains consolidated learning notes as well as individual daily records.
 
-## Safety and cost controls
-- AWS account status previously showed the Free plan with credits and an expiry date. Balances and plan terms can change; check the AWS Billing console before further work.
-- Do not assume every AWS service or resource is free.
-- Terraform exercises on Days 27–30 were local-only configurations and were checked with `terraform plan`; no `terraform apply` was run for those exercises.
-- Never commit AWS access keys, passwords, private SSH keys, `.env` files, Terraform state files, or other secrets to GitHub.
+- **[Learning Notes — Days 6–10](LEARNING_NOTES_DAYS_06-10.md)**
+- **[Browse All Daily Notes](days/)**
 
-## Suggested GitHub publishing steps
-1. Sign in to GitHub and create a new repository named `devops-learning-days-06-to-30`.
-2. Choose **Public** only if you are comfortable sharing the learning notes publicly; otherwise choose **Private**.
-3. Do not initialize the repository with a README if you plan to upload this folder as-is.
-4. Extract the ZIP file on your computer.
-5. Upload the files through GitHub's **Add file → Upload files** page, or use Git locally:
-   ```bash
-   git init
-   git add README.md LEARNING_NOTES_DAYS_06-30.md days/
-   git commit -m "Add consolidated DevOps learning notes for days 6-30"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/devops-learning-days-06-to-30.git
-   git push -u origin main
-   ```
-6. Replace `YOUR-USERNAME` with your GitHub username. Do not paste credentials or tokens into the repository.
-7. Copy the repository URL into your course submission after the upload succeeds.
+Each daily file documents the relevant learning topics, commands, configuration examples, and practical observations where available.
 
-## Next module
-Once the repository is uploaded, save the GitHub repository URL for submission and move on to the next module.
+---
+
+## 🧪 Practical Learning Approach
+
+I follow a repeatable workflow when practising technical tasks:
+
+1. **Understand** — Identify the purpose of the technology or task.
+2. **Configure** — Prepare the relevant commands, files, or settings.
+3. **Execute** — Carry out the exercise in the appropriate environment.
+4. **Verify** — Check service status, command output, configuration validity, or application response.
+5. **Troubleshoot** — Investigate errors using available evidence.
+6. **Document** — Record the steps, results, and lessons learned.
+
+This approach helps me build practical problem-solving skills instead of relying only on theory.
+
+---
+
+## 🔐 Security and Cost Awareness
+
+Security and cost control are important parts of my cloud learning journey.
+
+My practices include:
+
+- Avoiding the storage of passwords, access keys, and private credentials in Git repositories.
+- Reviewing network access rules and limiting unnecessary exposure.
+- Checking configurations before attempting infrastructure changes.
+- Using Terraform validation and planning to review changes before deployment.
+- Being mindful of AWS resource usage and potential charges.
+- Separating learning exercises from production environments.
+
+Terraform configuration and plans do not automatically mean that infrastructure has been deployed. I document what was actually tested and distinguish it from planned future work.
+
+---
+
+## 🚀 Current Focus and Next Steps
+
+I am continuing to develop my skills through structured, hands-on exercises.
+
+My next learning priorities include:
+
+- Building additional AWS infrastructure projects.
+- Improving Terraform configuration and resource management.
+- Practising Git-based collaboration and version control.
+- Developing Linux automation scripts.
+- Exploring Docker and containerisation.
+- Learning CI/CD concepts and tools such as Jenkins.
+- Progressing towards Kubernetes and configuration management with Ansible.
+- Exploring monitoring and observability with Prometheus and Grafana.
+
+These are learning goals and planned activities; they will be documented as I complete the relevant exercises.
+
+---
+
+## 👨‍💻 About Me
+
+I have a background in IT operations and support, including experience supporting business systems, troubleshooting technical issues, and assisting end users in a banking environment.
+
+I have also completed CCNA training and am developing my cloud and DevOps capabilities through practical exercises and technical documentation.
+
+I am working towards opportunities where I can contribute my existing IT experience while continuing to grow in cloud infrastructure, automation, and DevOps practices.
+
+**Areas of interest:** Cloud Engineering | DevOps | Linux Administration | Networking | IT Infrastructure
+
+---
+
+## 🤝 Connect
+
+- **GitHub:** [Lunga-learning](https://github.com/Lunga-learning)
+- **Portfolio repository:** [codomax-CloudComputing-DevOps](https://github.com/Lunga-learning/codomax-CloudComputing-DevOps)
+
+Thank you for visiting my portfolio. I welcome opportunities to learn, collaborate, and grow within the cloud computing and DevOps community.
+
+---
+
+*This repository is a living record of my learning journey. Content and practical projects will be updated as I progress.*

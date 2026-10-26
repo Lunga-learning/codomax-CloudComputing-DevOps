@@ -1,0 +1,9 @@
+services:
+  volume-test:
+    image: alpine
+    command: sh -c 'echo "Docker Compose volume persistence test" > /data/test.txt && cat /data/test.txt'
+    volumes:
+      - compose-learning-volume:/data
+
+volumes:
+  compose-learning-volume:

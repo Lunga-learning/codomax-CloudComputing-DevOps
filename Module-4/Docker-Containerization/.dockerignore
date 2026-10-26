@@ -1,0 +1,7 @@
+.env
+.env.*
+.git
+.gitignore
+compose.yaml
+compose-volume-test.yaml
+README.md

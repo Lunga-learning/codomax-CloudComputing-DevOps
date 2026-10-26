@@ -1,0 +1,10 @@
+services:
+  web:
+    image: my-docker-webapp:1.0
+    container_name: my-docker-webapp-compose
+    ports:
+      - "8080:80"
+    environment:
+      APP_ENV: ${APP_ENV}
+      APP_VERSION: ${APP_VERSION}
+    restart: unless-stopped

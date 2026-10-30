@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   validate-html:
-    name: Validate Module 5 HTML
+    name: Validate HTML and Run Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -46,6 +46,9 @@ jobs:
       - name: Validate application HTML
         run: html5validator --root Module-5/DevOps-CICD-Monitoring --also-check-css
 
+      - name: Run automated application tests
+        run: python -m unittest discover -s Module-5/DevOps-CICD-Monitoring/tests -v
+
       - name: Report success
         if: success()
-        run: echo "Module 5 CI pipeline completed successfully."
+        run: echo "Module 5 CI pipeline and automated tests completed successfully."

@@ -9,3 +9,7 @@ crash.*.log
 .env.*
 .aws/
 .DS_Store
+
+# Python cache files
+__pycache__/
+*.py[cod]

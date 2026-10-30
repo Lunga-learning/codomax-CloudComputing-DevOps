@@ -1,4 +1,4 @@
-name: Module 5 CI Pipeline
+name: Module 5 CI/CD Pipeline
 
 on:
   push:
@@ -52,3 +52,24 @@ jobs:
       - name: Report success
         if: success()
         run: echo "Module 5 CI pipeline and automated tests completed successfully."
+
+  deploy:
+    name: Deploy Module 5 to EC2
+    runs-on: ubuntu-latest
+    needs: validate-html
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Deploy application to EC2
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            mkdir -p /var/www/module5
+            echo "EC2 SSH connection successful."

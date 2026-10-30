@@ -63,7 +63,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Deploy application to EC2
+      - name: Copy application to EC2
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          source: "Module-5/DevOps-CICD-Monitoring/index.html"
+          target: "/var/www/module5/"
+          strip_components: 3
+
+      - name: Set permissions and verify deployment
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -71,5 +82,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            mkdir -p /var/www/module5
-            echo "EC2 SSH connection successful."
+            chmod 644 /var/www/module5/index.html
+            test -s /var/www/module5/index.html
+            echo "Module 5 deployment completed successfully."

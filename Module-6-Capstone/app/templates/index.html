@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Project Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>DevTrack</h2>
+
+        <nav>
+            <a href="/" class="active">Dashboard</a>
+            <a href="#">Projects</a>
+            <a href="#">Tasks</a>
+            <a href="#">Settings</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>DevOps Project Tracker</p>
+            <small>Module 6 Capstone</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome to your project workspace.</p>
+            </div>
+
+            <div class="user-profile">
+                <span>Administrator</span>
+            </div>
+        </header>
+
+        <section class="summary-cards">
+
+            <div class="card">
+                <p>Total Projects</p>
+                <h2>0</h2>
+                <span>Projects created</span>
+            </div>
+
+            <div class="card">
+                <p>Total Tasks</p>
+                <h2>0</h2>
+                <span>Tasks across projects</span>
+            </div>
+
+            <div class="card">
+                <p>In Progress</p>
+                <h2>0</h2>
+                <span>Tasks being worked on</span>
+            </div>
+
+            <div class="card">
+                <p>Completed</p>
+                <h2>0</h2>
+                <span>Finished tasks</span>
+            </div>
+
+        </section>
+
+        <section class="content-grid">
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Recent Projects</h2>
+                    <button type="button">+ New Project</button>
+                </div>
+
+                <div class="empty-state">
+                    <h3>No projects yet</h3>
+                    <p>Your projects will appear here once you create them.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Task Overview</h2>
+
+                <div class="task-status">
+                    <p>To Do <strong>0</strong></p>
+                    <p>In Progress <strong>0</strong></p>
+                    <p>Completed <strong>0</strong></p>
+                </div>
+
+                <div class="empty-state">
+                    <p>Your task statistics will appear here.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>DevOps Project Tracker | Module 6 Capstone</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>

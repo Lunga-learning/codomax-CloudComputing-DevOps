@@ -12,8 +12,8 @@
         <h2>DevTrack</h2>
 
         <nav>
-            <a href="/" class="active">Dashboard</a>
-            <a href="#">Projects</a>
+            <a href="{{ url_for('home') }}" class="active">Dashboard</a>
+            <a href="{{ url_for('projects.list_projects') }}">Projects</a>
             <a href="#">Tasks</a>
             <a href="#">Settings</a>
         </nav>
@@ -33,33 +33,46 @@
             </div>
 
             <div class="user-profile">
-                <span>Administrator</span>
+                <span>{{ current_user.username }}</span>
+
+                <form action="{{ url_for('auth.logout') }}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit">Logout</button>
+                </form>
             </div>
         </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
 
         <section class="summary-cards">
 
             <div class="card">
                 <p>Total Projects</p>
-                <h2>0</h2>
+                <h2>{{ total_projects }}</h2>
                 <span>Projects created</span>
             </div>
 
             <div class="card">
                 <p>Total Tasks</p>
-                <h2>0</h2>
+                <h2>{{ total_tasks }}</h2>
                 <span>Tasks across projects</span>
             </div>
 
             <div class="card">
                 <p>In Progress</p>
-                <h2>0</h2>
+                <h2>{{ in_progress_tasks }}</h2>
                 <span>Tasks being worked on</span>
             </div>
 
             <div class="card">
                 <p>Completed</p>
-                <h2>0</h2>
+                <h2>{{ completed_tasks }}</h2>
                 <span>Finished tasks</span>
             </div>
 
@@ -68,29 +81,78 @@
         <section class="content-grid">
 
             <div class="panel">
+
                 <div class="panel-header">
                     <h2>Recent Projects</h2>
-                    <button type="button">+ New Project</button>
+
+                    <a href="{{ url_for('projects.create_project') }}" class="btn-primary">
+                        + New Project
+                    </a>
                 </div>
 
-                <div class="empty-state">
-                    <h3>No projects yet</h3>
-                    <p>Your projects will appear here once you create them.</p>
-                </div>
+                {% if recent_projects %}
+
+                    {% for project in recent_projects %}
+
+                        <div class="project-card">
+
+                            <h3>
+                                <a href="{{ url_for('projects.view_project', project_id=project.id) }}">
+                                    {{ project.name }}
+                                </a>
+                            </h3>
+
+                            <p>
+                                {{ project.description or "No description provided." }}
+                            </p>
+
+                            <span>Status: {{ project.status }}</span>
+
+                            <p>
+                                Tasks: {{ project.tasks|length }}
+                            </p>
+
+                            <small>
+                                Created: {{ project.created_at.strftime('%d %b %Y') }}
+                            </small>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="empty-state">
+                        <h3>No projects yet</h3>
+                        <p>Your projects will appear here once you create them.</p>
+
+                        <a href="{{ url_for('projects.create_project') }}" class="btn-primary">
+                            Create Your First Project
+                        </a>
+                    </div>
+
+                {% endif %}
+
             </div>
 
             <div class="panel">
+
                 <h2>Task Overview</h2>
 
                 <div class="task-status">
-                    <p>To Do <strong>0</strong></p>
-                    <p>In Progress <strong>0</strong></p>
-                    <p>Completed <strong>0</strong></p>
+                    <p>To Do <strong>{{ todo_tasks }}</strong></p>
+                    <p>In Progress <strong>{{ in_progress_tasks }}</strong></p>
+                    <p>Completed <strong>{{ completed_tasks }}</strong></p>
                 </div>
 
                 <div class="empty-state">
-                    <p>Your task statistics will appear here.</p>
+                    {% if total_tasks > 0 %}
+                        <p>Your task statistics are up to date.</p>
+                    {% else %}
+                        <p>Your task statistics will appear here once you create tasks.</p>
+                    {% endif %}
                 </div>
+
             </div>
 
         </section>

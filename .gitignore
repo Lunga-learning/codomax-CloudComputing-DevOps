@@ -13,3 +13,15 @@ crash.*.log
 # Python cache files
 __pycache__/
 *.py[cod]
+
+# Python testing and coverage
+.coverage*
+htmlcov/
+.pytest_cache/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python package metadata
+*.egg-info/

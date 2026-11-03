@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task | DevTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <h2>DevTrack</h2>
+
+            <nav>
+                <a href="{{ url_for('home') }}">Dashboard</a>
+                <a href="{{ url_for('projects.list_projects') }}" class="active">Projects</a>
+                <a href="{{ url_for('tasks.list_tasks', project_id=project.id) }}">Tasks</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Module 6 Capstone</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Create New Task</h1>
+                    <p>Add a task to {{ project.name }}.</p>
+                </div>
+
+                <div class="user-profile">
+                    <span>{{ current_user.username }}</span>
+
+                    <form action="{{ url_for('auth.logout') }}" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </header>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endwith %}
+
+            <section class="content-section">
+
+                <div class="section-header">
+                    <h2>New Task</h2>
+
+                    <a href="{{ url_for('tasks.list_tasks', project_id=project.id) }}">
+                        Back to Tasks
+                    </a>
+                </div>
+
+                <div class="project-card">
+
+                    <form method="POST"
+                          action="{{ url_for('tasks.create_task', project_id=project.id) }}">
+
+                        <input type="hidden" name="csrf_token"
+                               value="{{ csrf_token() }}">
+
+                        <div class="form-group">
+                            <label for="title">Task Title</label>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                maxlength="150"
+                                placeholder="Enter task title"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="5"
+                                placeholder="Describe what needs to be done"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="due_date">Due Date</label>
+
+                            <input
+                                type="date"
+                                id="due_date"
+                                name="due_date"
+                            >
+                        </div>
+
+                        <p><strong>Initial Status:</strong> To Do</p>
+
+                        <div class="form-actions">
+
+                            <button type="submit" class="btn-primary">
+                                Create Task
+                            </button>
+
+                            <a href="{{ url_for('tasks.list_tasks', project_id=project.id) }}">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

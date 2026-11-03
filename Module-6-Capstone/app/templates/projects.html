@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | DevTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <h2>DevTrack</h2>
+
+            <nav>
+                <a href="{{ url_for('home') }}">Dashboard</a>
+                <a href="{{ url_for('projects.list_projects') }}" class="active">Projects</a>
+                <a href="#">Tasks</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Module 6 Capstone</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>My Projects</h1>
+                    <p>Manage and track your projects.</p>
+                </div>
+
+                <div class="user-profile">
+                    <span>{{ current_user.username }}</span>
+
+                    <form action="{{ url_for('auth.logout') }}" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </header>
+
+            <section class="content-section">
+
+                <div class="section-header">
+                    <h2>All Projects</h2>
+
+                    <a href="{{ url_for('projects.create_project') }}" class="btn-primary">
+                        + New Project
+                    </a>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endwith %}
+
+                {% if projects %}
+
+                    <div class="projects-grid">
+
+                        {% for project in projects %}
+
+                            <article class="project-card">
+
+                                <h3>{{ project.name }}</h3>
+
+                                <p>
+                                    {{ project.description or "No description provided." }}
+                                </p>
+
+                                <div class="project-details">
+                                    <span>Status: {{ project.status }}</span>
+                                    <span>Tasks: {{ project.tasks|length }}</span>
+                                </div>
+
+                                <small>
+                                    Created: {{ project.created_at.strftime('%d %b %Y') }}
+                                </small>
+
+                            </article>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="empty-state">
+                        <h3>No projects yet</h3>
+                        <p>Create your first project to get started.</p>
+
+                        <a href="{{ url_for('projects.create_project') }}" class="btn-primary">
+                            Create Your First Project
+                        </a>
+                    </div>
+
+                {% endif %}
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

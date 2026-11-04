@@ -1,10 +1,10 @@
 # ☁️ Cloud Computing & DevOps Learning Portfolio
 
-### Hands-on Learning | AWS | Linux | Networking | Terraform | Infrastructure as Code
+### Hands-on Learning | AWS | Linux | Networking | Terraform | Docker | CI/CD | Monitoring
 
 Welcome to my Cloud Computing and DevOps learning portfolio!
 
-This repository documents my practical learning journey as I develop skills in cloud infrastructure, Linux administration, networking, automation, and Infrastructure as Code (IaC).
+This repository documents my practical learning journey as I develop skills in cloud infrastructure, Linux administration, networking, automation, containerisation, CI/CD and Infrastructure as Code (IaC).
 
 My approach is to learn the concepts, practise them in a technical environment, document the process, troubleshoot problems, and record the results.
 
@@ -20,8 +20,10 @@ My objectives are to:
 - Strengthen Linux administration and troubleshooting skills.
 - Understand IP addressing, DNS, routing, ports, and network security.
 - Learn to define and organise infrastructure using Terraform.
-- Practise reusable Terraform modules and configurable deployments.
-- Build a portfolio that demonstrates practical technical learning.
+- Build and containerise applications using Docker.
+- Automate testing and deployment using CI/CD pipelines.
+- Implement monitoring, metrics collection, and alerting.
+- Build practical projects integrating cloud infrastructure and DevOps tools.
 - Develop secure, repeatable, and cost-conscious cloud deployment habits.
 
 ---
@@ -31,17 +33,26 @@ My objectives are to:
 | Technology | Learning Focus |
 |---|---|
 | Linux | Command-line administration, files, permissions, processes, and services |
-| AWS | Cloud infrastructure concepts and networking |
-| Amazon EC2 | Virtual servers and Linux-based web server deployment |
-| Nginx | Web server installation, service management, and HTTP testing |
+| AWS | Cloud infrastructure and networking |
+| Amazon EC2 | Virtual servers and Linux-based application deployment |
+| Amazon Aurora PostgreSQL | Managed relational database services |
+| Nginx | Web server installation and service management |
 | Networking | IP addressing, DNS, ports, routing, and firewalls |
 | Terraform | Infrastructure as Code, providers, variables, locals, and outputs |
-| Terraform Modules | Reusable configurations and root/child module organisation |
-| Git | Version control concepts |
+| Terraform Modules | Reusable configurations and module organisation |
+| Docker | Application containerisation and image building |
+| Docker Compose | Multi-container application environments |
+| Python | Application development and automated testing |
+| Flask | Web application development |
+| PostgreSQL | Relational database management |
+| Git | Version control |
 | GitHub | Source control, documentation, and portfolio development |
-| AWS CLI | Command-line interaction and credential troubleshooting |
-
-*This table reflects the technologies and topics covered in my learning activities. The portfolio will expand as I complete additional hands-on projects.*
+| GitHub Actions | Automated testing, image building, and deployment |
+| Prometheus | Metrics collection and monitoring |
+| Node Exporter | Linux host metrics |
+| Grafana | Monitoring dashboards and visualisation |
+| Alertmanager | Alert management and email notifications |
+| AWS CLI | Command-line interaction with AWS services |
 
 ---
 
@@ -98,103 +109,122 @@ Topics covered include:
 
 ---
 
+## 🚀 Module 6 Capstone — DevOps Project Tracker
+
+**Project:** Build, containerise, automate, deploy, and monitor a Flask-based DevOps Project Tracker application.
+
+This capstone brings together several technologies and practices covered throughout my learning journey.
+
+### Project Technologies
+
+- Python and Flask for application development.
+- PostgreSQL for relational database management.
+- Docker and Docker Compose for containerisation.
+- AWS EC2 for application hosting.
+- Amazon Aurora PostgreSQL for managed database services.
+- IAM authentication for database connectivity.
+- Terraform for infrastructure configuration.
+- Git and GitHub for version control.
+- GitHub Actions for CI/CD automation.
+- Prometheus and Node Exporter for metrics collection.
+- Grafana for monitoring dashboards.
+- Alertmanager and Brevo SMTP for email notifications.
+
+### Application Features
+
+- User authentication.
+- Project management.
+- Task management.
+- Application dashboard.
+- Health-check endpoint.
+- PostgreSQL database integration.
+
+### CI/CD Pipeline
+
+The GitHub Actions workflow automates:
+
+1. Application testing.
+2. Code coverage reporting.
+3. Docker image building.
+4. Deployment to the existing AWS EC2 host.
+5. Application health verification.
+
+The deployment job runs after successful testing and is restricted to pushes to the `main` branch.
+
+### Testing Results
+
+The local automated test suite completed successfully:
+
+- **13 tests passed.**
+- **0 tests failed.**
+- **75% overall code coverage.**
+
+Local testing used Python 3.14.4. The GitHub Actions workflow uses Python 3.12.
+
+### Monitoring and Alerting
+
+The monitoring environment includes:
+
+- Prometheus metrics collection.
+- Node Exporter host monitoring.
+- Grafana dashboards.
+- CPU, memory, and filesystem warning rules.
+- Alertmanager email notification integration through Brevo.
+
+A manual Alertmanager email test was successfully delivered. Actual threshold-triggered Prometheus alert delivery remains subject to end-to-end validation.
+
+### Project Documentation
+
+The capstone includes dedicated documentation:
+
+| Document | Description |
+|---|---|
+| [Project Overview](Module-6-Capstone/docs/README.md) | Project introduction, technologies, features, and testing |
+| [Architecture](Module-6-Capstone/docs/architecture.md) | Application and infrastructure architecture |
+| [Deployment Guide](Module-6-Capstone/docs/deployment.md) | Local Docker and AWS deployment |
+| [CI/CD Pipeline](Module-6-Capstone/docs/ci-cd.md) | GitHub Actions testing and deployment workflow |
+| [Monitoring Guide](Module-6-Capstone/docs/monitoring.md) | Prometheus, Grafana, Alertmanager, and notifications |
+
+**Deployment note:** The application currently binds to localhost on the EC2 host and is accessed through an SSH tunnel. It is not documented as a publicly accessible application URL.
+
+---
+
 ## 📂 Repository Structure
 
 ```text
 codomax-CloudComputing-DevOps/
 │
 ├── README.md
-├── LEARNING_NOTES_DAYS_06-30.md
-├── .gitignore
+├── LEARNING_NOTES_DAYS_06-10.md
+├── MODULE 4 DOCKER & CONTAINERIZATION.md
+├── Module-5 DevOps-CICD-Monitoring notes.md
+├── module-03-cloud-services-web-app-deployment.md
 │
-└── days/
-    ├── day-06.md
-    ├── day-07.md
-    ├── day-08.md
-    ├── ...
-    ├── day-29.md
-    └── day-30.md
-```
-
-The repository contains consolidated learning notes as well as individual daily records.
-
-- **[Learning Notes — Days 6–10](LEARNING_NOTES_DAYS_06-10.md)**
-- **[Browse All Daily Notes](days/)**
-
-Each daily file documents the relevant learning topics, commands, configuration examples, and practical observations where available.
-
----
-
-## 🧪 Practical Learning Approach
-
-I follow a repeatable workflow when practising technical tasks:
-
-1. **Understand** — Identify the purpose of the technology or task.
-2. **Configure** — Prepare the relevant commands, files, or settings.
-3. **Execute** — Carry out the exercise in the appropriate environment.
-4. **Verify** — Check service status, command output, configuration validity, or application response.
-5. **Troubleshoot** — Investigate errors using available evidence.
-6. **Document** — Record the steps, results, and lessons learned.
-
-This approach helps me build practical problem-solving skills instead of relying only on theory.
-
----
-
-## 🔐 Security and Cost Awareness
-
-Security and cost control are important parts of my cloud learning journey.
-
-My practices include:
-
-- Avoiding the storage of passwords, access keys, and private credentials in Git repositories.
-- Reviewing network access rules and limiting unnecessary exposure.
-- Checking configurations before attempting infrastructure changes.
-- Using Terraform validation and planning to review changes before deployment.
-- Being mindful of AWS resource usage and potential charges.
-- Separating learning exercises from production environments.
-
-Terraform configuration and plans do not automatically mean that infrastructure has been deployed. I document what was actually tested and distinguish it from planned future work.
-
----
-
-## 🚀 Current Focus and Next Steps
-
-I am continuing to develop my skills through structured, hands-on exercises.
-
-My next learning priorities include:
-
-- Building additional AWS infrastructure projects.
-- Improving Terraform configuration and resource management.
-- Practising Git-based collaboration and version control.
-- Developing Linux automation scripts.
-- Exploring Docker and containerisation.
-- Learning CI/CD concepts and tools such as Jenkins.
-- Progressing towards Kubernetes and configuration management with Ansible.
-- Exploring monitoring and observability with Prometheus and Grafana.
-
-These are learning goals and planned activities; they will be documented as I complete the relevant exercises.
-
----
-
-## 👨‍💻 About Me
-
-I have a background in IT operations and support, including experience supporting business systems, troubleshooting technical issues, and assisting end users in a banking environment.
-
-I have also completed CCNA training and am developing my cloud and DevOps capabilities through practical exercises and technical documentation.
-
-I am working towards opportunities where I can contribute my existing IT experience while continuing to grow in cloud infrastructure, automation, and DevOps practices.
-
-**Areas of interest:** Cloud Engineering | DevOps | Linux Administration | Networking | IT Infrastructure
-
----
-
-## 🤝 Connect
-
-- **GitHub:** [Lunga-learning](https://github.com/Lunga-learning)
-- **Portfolio repository:** [codomax-CloudComputing-DevOps](https://github.com/Lunga-learning/codomax-CloudComputing-DevOps)
-
-Thank you for visiting my portfolio. I welcome opportunities to learn, collaborate, and grow within the cloud computing and DevOps community.
-
----
-
-*This repository is a living record of my learning journey. Content and practical projects will be updated as I progress.*
+├── Module-4/
+│   └── Docker-Containerization/
+│       ├── Dockerfile
+│       ├── compose.yaml
+│       ├── compose-volume-test.yaml
+│       ├── index.html
+│       └── README.md
+│
+├── Module-5/
+│   └── DevOps-CICD-Monitoring/
+│
+└── Module-6-Capstone/
+    ├── app/
+    ├── database/
+    ├── monitoring/
+    ├── tests/
+    ├── terraform/
+    ├── docs/
+    │   ├── README.md
+    │   ├── architecture.md
+    │   ├── deployment.md
+    │   ├── ci-cd.md
+    │   └── monitoring.md
+    ├── Dockerfile
+    ├── docker-compose.yml
+    ├── requirements.txt
+    ├── requirements-dev.txt
+    └── run.py

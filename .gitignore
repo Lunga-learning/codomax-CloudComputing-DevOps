@@ -25,3 +25,6 @@ venv/
 
 # Python package metadata
 *.egg-info/
+
+# Allow safe example environment configuration files
+!.env.example
